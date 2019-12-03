@@ -1,7 +1,43 @@
 // Header, footer, navigation, section 
 h1 {
-  color:green;
+  color:#1164F3;
+  font-size: 55px;
+  line-height: 64px;
+  font-family: "Domine", serif;
 }
 p {
-  color: orange;
+  color: #676565;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 400;
+}
+section.hero {
+  padding: 60px 0;
+  background-color: pink;
+}
+section.pricing {
+  .custom-columns {
+    display: flex;
+    flex-direction: row;
+    text-align:center;
+  }
+  .save-annually {
+    p {
+      color: #676565;
+      font-size: 14px;
+      line-height: 20px;
+      .save {
+        color: #409B66;
+        font-size: 28px;
+        line-height: 25px;
+      }
+      .disclaimer {
+        font-size: 8px;
+        font-style: italic;
+      }
+    }
+  }
+  .price-1 {
+    border-top: solid 20px#8C2F9A;
+  }
 }

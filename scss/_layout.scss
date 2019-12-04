@@ -1,27 +1,49 @@
 // Header, footer, navigation, section 
-h1 {
-  color:#1164F3;
-  font-size: 55px;
-  line-height: 64px;
-  font-family: "Domine", serif;
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
 }
-p {
-  color: #676565;
-  font-size: 24px;
-  line-height: 34px;
-  font-weight: 400;
+section.hero {
+  h1 {
+    color:#1164F3;
+    font-size: 55px;
+    line-height: 64px;
+    font-family: "Domine", serif;
+    margin-bottom: 24px;
+  }
+  p {
+    color: #676565;
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 400;
+  }
+}
+.custom-columns {
+  display: flex;
+  flex-direction: row;
+  text-align:center;
+}
+.tier {
+  border-radius: 4px 4px 0 0;
+  border: 1px solid  rgba(0, 0, 0, 0.18);
+  // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  max-width: 261px;
+  width: 100%;
+  border-bottom: none;
+  border-top: none;
+}
+.left-tier {
+  flex-grow: 1;
 }
 section.hero {
   padding: 60px 0;
-  background-color: pink;
+  background-color: #ffffff;
 }
 section.pricing {
-  .custom-columns {
+  .left-tier {
+    justify-content: center;
+    align-items: center;
     display: flex;
-    flex-direction: row;
-    text-align:center;
-  }
-  .save-annually {
     p {
       color: #676565;
       font-size: 14px;
@@ -37,7 +59,127 @@ section.pricing {
       }
     }
   }
-  .price-1 {
-    border-top: solid 20px#8C2F9A;
+  .tier {
+    border-radius: 4px 4px 0 0;
+    border: 1px solid  rgba(0, 0, 0, 0.18);
+    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+    max-width: 261px;
+    width: 100%;
+    padding: 28px 0;
+    border-bottom: none;
+    h2 {
+      font-size: 45px;
+      line-height: 36px;
+      letter-spacing: -0.8px;
+      font-weight: 600;
+      .month {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+    }
+    h3 {
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 36px;
+      margin-bottom: 10px;
+    }
+    h4 {
+      position: relative;
+      color: #DCDCDC;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 36px;
+      margin-bottom: 8px;
+      &:before { 
+        content: '';
+        position: absolute;
+        bottom: 50%;
+        border: #DCDCDC 1px solid;
+        width: 85px;
+        z-index:0;
+      }
+      .month {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+    p {
+      color: rgba(0, 0, 0, 0.68);
+      font-size: 14px;
+      margin-bottom: 12px;
+      &.bold {
+        font-weight: 600;
+      }
+    }
+    &.starter {
+      border-top: solid 20px#8C2F9A;
+      color: #8C2F9A;
+    }
+    &.website {
+      border-top: solid 20px#4B45CD;
+      color: #4B45CD;
+    }
+    &.marketing {
+      border-top: solid 20px#1164F3;
+      color: #1164F3;
+    }
+    button.add-to-cart {
+      line-height: 10px;
+      height: 40px;
+      padding: 12px 16px;
+      text-transform: uppercase;
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 4px;
+      background-color: #BD2380;
+      border: none;
+    }
+  }
+}
+section.features {
+  height: 60px;
+  h2 {
+    background-color: #F5F5F5;
+    padding: 18px 24px;
+    color: #000000;
+    font-size: 20px;
+    line-height: 28px;
+    // margin-top: -1px;
+    // z-index:1;
+    // position:relative;
+    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
+  }
+  .left-tier {
+    padding: 10px 24px 18px;
+    text-align:left;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+    border-bottom: none;
+    border-top: none;
+    p {
+      border-bottom: 1px solid #c6c6c6;
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+    }
+  }
+  .tier {
+    padding: 10px 24px 18px;
+    border-radius: 0;
+    .item {
+      display: block;
+      border-bottom: 1px solid #c6c6c6;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      p {
+        line-height: 40px;
+      }
+    }
   }
 }

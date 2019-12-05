@@ -1,21 +1,25 @@
 // Header, footer, navigation, section 
+// body {
+//   overflow:hidden;
+// }
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
-section.hero {
-  h1 {
-    color:#1164F3;
-    font-size: 55px;
-    line-height: 64px;
-    font-family: "Domine", serif;
-    margin-bottom: 24px;
+h1 {
+  color:#1164F3;
+  font-size: 55px;
+  line-height: 64px;
+  font-family: "Domine", serif;
+  margin-bottom: 24px;
+  .mobile {
+    display: none;
   }
-  p {
-    color: #676565;
-    font-size: 24px;
-    line-height: 34px;
-    font-weight: 400;
-  }
+}
+p {
+  color: #676565;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 400;
 }
 .custom-columns {
   display: flex;
@@ -25,7 +29,6 @@ section.hero {
 .tier {
   border-radius: 4px 4px 0 0;
   border: 1px solid  rgba(0, 0, 0, 0.18);
-  // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
   background: #ffffff;
   max-width: 261px;
   width: 100%;
@@ -38,6 +41,9 @@ section.hero {
 section.hero {
   padding: 60px 0;
   background-color: #ffffff;
+}
+section.pricing-mobile {
+  display: none;
 }
 section.pricing {
   .left-tier {
@@ -62,7 +68,6 @@ section.pricing {
   .tier {
     border-radius: 4px 4px 0 0;
     border: 1px solid  rgba(0, 0, 0, 0.18);
-    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
     background: #ffffff;
     max-width: 261px;
     width: 100%;
@@ -141,23 +146,26 @@ section.pricing {
   }
 }
 section.features {
-  height: 60px;
   h2 {
     background-color: #F5F5F5;
     padding: 18px 24px;
     color: #000000;
     font-size: 20px;
     line-height: 28px;
-    // margin-top: -1px;
-    // z-index:1;
-    // position:relative;
-    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
+  }
+  p {
+    font-size: 16px;
+  }
+  p.disclaimer {
+    color: #7C7C7C;
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 20px;
   }
   .left-tier {
     padding: 10px 24px 18px;
     text-align:left;
     border: 1px solid rgba(0, 0, 0, 0.18);
-    // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
     background: #ffffff;
     border-bottom: none;
     border-top: none;
@@ -166,6 +174,7 @@ section.features {
       height: 40px;
       line-height: 40px;
       font-size: 16px;
+      letter-spacing: -0.4px;
     }
   }
   .tier {
@@ -179,6 +188,113 @@ section.features {
       justify-content: center;
       p {
         line-height: 40px;
+      }
+    }
+  }
+  .last-row {
+    border-bottom: 1px solid #c6c6c6;
+    margin-bottom: 40px;
+  }
+}
+section.gallery {
+  padding: 100px 0;
+  h1, p {
+    text-align:center;
+  }
+  p {
+    margin-bottom: 60px;
+  }
+  p.examples {
+    font-size: 16px;
+    margin-top: 48px;
+  }
+  img {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
+  }
+  .image-example {
+    position: relative;
+    height: 200px;
+    &:hover {
+      .overlay {
+        display: block;
+        background: rgba(0, 0, 0, .3);
+        width: 100%;
+        height: 100%;
+      }
+      img {
+        opacity: .35;
+        transition: opacity .5s ease;
+      }
+      .button {
+        opacity: 1;
+      }
+    }
+  }
+  .button {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .5s ease;
+    a {
+      padding: 12px 32px;
+      text-align: center;
+      color: white;
+      background: #1164F3;
+      z-index: 1;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+  }
+}
+@media screen and (max-width:414px) {
+  section.pricing, section.features, section.gallery {
+    display: none;
+  }
+  section.hero {
+    h1 {
+      font-size: 35px;
+      line-height: 43px;
+      text-align: center;
+      .mobile {
+        display: block;
+      }
+    }
+    p {
+      display: none;
+    }
+    img {
+      max-width: 282px;
+      width: 100%;
+    }
+    .image-center {
+      justify-content: center;
+      display:flex;
+    }
+  }
+  section.pricing-mobile {
+    display: block;
+    p {
+      text-align: center;
+      color: #676565;
+      font-size: 14px;
+      line-height: 20px;
+      .save {
+        color: #409B66;
+        font-size: 28px;
+        line-height: 25px;
+      }
+      .disclaimer {
+        font-size: 8px;
+        font-style: italic;
       }
     }
   }

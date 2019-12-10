@@ -17,6 +17,43 @@ h1 {
   flex-direction: row;
   text-align:center;
 }
+.tooltip {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+  z-index: 5;
+  cursor: pointer;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background: #1164F3;
+  color: #fff;
+  text-align: left;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 17px;    
+  letter-spacing: 0.2px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  width: 200px;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -170px;
+  &:after {
+    border-color: #1164F3 transparent transparent transparent;
+    border-style: solid;
+    border-width: 10px 10px 0px 10px;
+    bottom: -8px;
+    content: "";
+    position: absolute;
+    right: 20px;    
+  }
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 .tier {
   border-radius: 4px 4px 0 0;
   border: 1px solid  rgba(0, 0, 0, 0.18);
@@ -43,6 +80,7 @@ section.pricing-features-mobile {
   display: none;
 }
 section.pricing {
+  z-index: 10;
   .left-tier {
     justify-content: center;
     align-items: center;
@@ -178,8 +216,9 @@ section.features {
     border-right: none;
     p {
       border-bottom: 1px solid #c6c6c6;
-      height: 40px;
-      line-height: 40px;
+      min-height: 43.89px;
+      line-height: 20px;
+      padding: 10px 0;
       font-size: 16px;
       letter-spacing: -0.4px;
     }
@@ -190,11 +229,12 @@ section.features {
     .item {
       display: block;
       border-bottom: 1px solid #c6c6c6;
-      height: 40px;
+      min-height: 43.89px;
       display: flex;
       justify-content: center;
       p {
-        line-height: 40px;
+        padding: 10px 0;
+        line-height: 23.89px;
       }
     }
   }
@@ -287,7 +327,7 @@ section.gallery {
     }
   }
 }
-@media screen and (max-width:414px) {
+@media screen and (max-width:768px) {
   section.pricing, section.features {
     display: none;
   }
@@ -323,13 +363,22 @@ section.gallery {
         display: none;
       }
     }
+    .fixed {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 15px;
+      right: 15px;
+      margin-top: 0!important;
+      z-index:10;
+    }
     .tabs {
-      position:relative;
       display: flex;
       justify-content: space-between;
       padding: 0 15px;
       margin-top: 24px;
       transition: .5s;
+      background: #ffffff;
         .mobile-tab {
           flex-grow: 1;
           height: 60px;

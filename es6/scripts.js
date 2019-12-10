@@ -1,6 +1,6 @@
 "use strict" ;
 $(document).ready(function() {
-
+  //Desktop fixed pricing section on scroll
   var fixmeTop = $('.pricing').offset().top;       // get initial position of the element
   $(window).scroll(function() {                  // assign scroll event listener
     var currentScroll = $(window).scrollTop(); // get current position
@@ -16,7 +16,18 @@ $(document).ready(function() {
         position: 'relative'
       });
     }
-});
+  });
+
+  //Mobile fixed pricing section on scroll
+  $(window).bind('scroll', function() {
+    var navHeight = $( window ).height() - 125;
+      if ($(window).scrollTop() > navHeight) {
+        $('.tabs').addClass('fixed');
+      }
+      else {
+        $('.tabs').removeClass('fixed');
+      }
+   });
 
   //Controls mobile price tabs
   $('.tabs > div > a').click(function(event) {

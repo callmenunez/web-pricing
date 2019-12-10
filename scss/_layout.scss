@@ -354,6 +354,9 @@ section.gallery {
   }
   section.pricing-features-mobile {
     display: block;
+    .container {
+      width: 100%;
+    }
     #starter, #website, #marketing {
       display: none;
       &.active {
@@ -376,7 +379,6 @@ section.gallery {
       display: flex;
       justify-content: space-between;
       padding: 0 15px;
-      margin-top: 24px;
       transition: .5s;
       background: #ffffff;
         .mobile-tab {
@@ -385,6 +387,14 @@ section.gallery {
           display: flex;
           justify-content: center;
           align-items: center;
+          a {
+            width: 100%;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
           &.tab1 {
             color: #8C2F9A;
             border: solid 1px #8C2F9A;
@@ -493,6 +503,7 @@ section.gallery {
       color: #676565;
       font-size: 14px;
       line-height: 20px;
+      margin-bottom: 24px;
       .save {
         color: #409B66;
         font-size: 28px;

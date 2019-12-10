@@ -18,27 +18,16 @@ $(document).ready(function() {
     }
   });
 
-  //Mobile fixed pricing section on scroll
-  $(window).bind('scroll', function() {
-    var navHeight = $( window ).height() - 125;
-      if ($(window).scrollTop() > navHeight) {
-        $('.tabs').addClass('fixed');
-      }
-      else {
-        $('.tabs').removeClass('fixed');
-      }
-   });
-
   //Controls mobile price tabs
   $('.tabs > div > a').click(function(event) {
     event.preventDefault(); //stop browser to take action for clicked anchor
     //get displaying tab content jQuery selector
-    var active_tab_selector = $('.tabs > div.active > a').attr('href');
+    var active_tab_selector = $('.tabs > div.mobile-tab.active > a').attr('href');
     //find actived navigation and remove 'active' css
-    var actived_nav = $('.tabs > div.active');
+    var actived_nav = $('.tabs > div.mobile-tab.active');
     actived_nav.removeClass('active');
     //add 'active' css into clicked navigation
-    $(this).parents('div').addClass('active');
+    $(this).parents('div.mobile-tab').addClass('active');
     //inactive displaying tab content
     $(active_tab_selector).removeClass('active');
     $(active_tab_selector).addClass('inactive');

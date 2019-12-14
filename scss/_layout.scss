@@ -79,6 +79,11 @@ section.hero {
 section.pricing-features-mobile {
   display: none;
 }
+/* This div has to be the same height as section.pricing. 
+Adding this div fixes a "jumping" issue that occurs on scroll */
+.sticky-pricing-fix {
+  height: 346px;
+}
 section.pricing {
   z-index: 10;
   .left-tier {
@@ -328,7 +333,7 @@ section.gallery {
   }
 }
 @media screen and (max-width:768px) {
-  section.pricing, section.features {
+  section.pricing, section.features, .sticky-pricing-fix {
     display: none;
   }
   section.hero {
@@ -362,6 +367,9 @@ section.gallery {
       &.active {
         display: block;
       }
+      &.active-padding {
+        padding-top: 60px;
+      }
       &.inactive {
         display: none;
       }
@@ -375,7 +383,11 @@ section.gallery {
       margin-top: 0!important;
       z-index:10;
     }
+    .sticky-tabs-fix {
+      height: 60px;
+    }
     .tabs {
+      z-index: 40;
       display: flex;
       justify-content: space-between;
       padding: 0 15px;

@@ -1,6 +1,6 @@
 "use strict" ;
 $(document).ready(function() {
-
+  //Desktop fixed pricing section on scroll
   var fixmeTop = $('.pricing').offset().top;       // get initial position of the element
   $(window).scroll(function() {                  // assign scroll event listener
     var currentScroll = $(window).scrollTop(); // get current position
@@ -16,18 +16,53 @@ $(document).ready(function() {
         position: 'relative'
       });
     }
-});
+  });
+
+    //Mobile fixed pricing section on scroll
+    var fixmeTopMobile = $('.tabs').offset().top;       // get initial position of the element
+    $(window).scroll(function() {                  // assign scroll event listener
+      var currentScroll = $(window).scrollTop(); // get current position
+      if (currentScroll >= fixmeTopMobile) {           // apply position: fixed if you
+        $('.tabs').css({                      // scroll to that element or below it
+          position: 'fixed',
+          top: '0',
+          width: '100%'
+        });
+      } else {                                   // apply position: static
+        $('.tabs').css({                      // if you scroll above it
+          position: 'relative',
+          width: 'auto'
+        });
+      }
+    });
+
+    //Control scroll to top of tabs 
+    $(".tab1").click(function() {
+      $('html,body').animate({
+          scrollTop: $("#starter").offset().top-75},
+          'slow');
+    });
+    $(".tab2").click(function() {
+      $('html,body').animate({
+          scrollTop: $("#website").offset().top-75},
+          'slow');
+    });
+    $(".tab3").click(function() {
+      $('html,body').animate({
+          scrollTop: $("#marketing").offset().top-75},
+          'slow');
+    });
 
   //Controls mobile price tabs
   $('.tabs > div > a').click(function(event) {
     event.preventDefault(); //stop browser to take action for clicked anchor
     //get displaying tab content jQuery selector
-    var active_tab_selector = $('.tabs > div.active > a').attr('href');
+    var active_tab_selector = $('.tabs > div.mobile-tab.active > a').attr('href');
     //find actived navigation and remove 'active' css
-    var actived_nav = $('.tabs > div.active');
+    var actived_nav = $('.tabs > div.mobile-tab.active');
     actived_nav.removeClass('active');
     //add 'active' css into clicked navigation
-    $(this).parents('div').addClass('active');
+    $(this).parents('div.mobile-tab').addClass('active');
     //inactive displaying tab content
     $(active_tab_selector).removeClass('active');
     $(active_tab_selector).addClass('inactive');

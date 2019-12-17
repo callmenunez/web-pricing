@@ -54,6 +54,32 @@ h1 {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+.modal {
+  z-index: 60;
+  max-width: 800px;
+  padding: 60px 60px 90px;
+  h3 {
+    color: #1164F3;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 48px;
+    margin-bottom: 48px;
+  }
+  a {
+    color: #BD2380;
+    text-decoration: none;
+  }
+  a.close-modal {
+    background-image: url(../img/close.svg);
+    top: 32px;
+    right: 32px;
+    width: 14px;
+    height: 14px;
+  }
+}
+.blocker {
+  z-index: 60;
+}
 .tier {
   border-radius: 4px 4px 0 0;
   border: 1px solid  rgba(0, 0, 0, 0.18);
@@ -69,6 +95,9 @@ h1 {
 section.hero {
   padding: 60px 0;
   background-color: #ffffff;
+  img {
+    height: auto;
+  }
   p {
     color: #676565;
     font-size: 24px;
@@ -430,7 +459,7 @@ section.gallery {
             transition: .5s;
             border-left: none;
             border-right: none;
-            &:hover {
+            &:hover, &.active {
               background: #4B45CD;
               a {
                 color: #fff;
@@ -447,7 +476,7 @@ section.gallery {
             border: solid 1px #1164F3;
             border-radius: 0 4px 4px 0;
             transition: .5s;
-            &:hover {
+            &:hover, &.active {
               background: #1164F3;
               a {
                 color: #fff;
@@ -515,7 +544,6 @@ section.gallery {
       color: #676565;
       font-size: 14px;
       line-height: 20px;
-      margin-bottom: 24px;
       .save {
         color: #409B66;
         font-size: 28px;
@@ -654,6 +682,23 @@ section.gallery {
           opacity: 0;
         }
       }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .modal {
+    padding: 20px 20px 40px;
+    h3 {
+      font-size: 24px;
+      line-height: 30px;
+      margin-bottom: 24px;
+    }
+    p {
+      font-size: 12px;
+    }
+    a.close-modal {
+      top: 16px;
+      right: 16px;
     }
   }
 }

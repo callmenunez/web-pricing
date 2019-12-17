@@ -10,6 +10,7 @@
   <meta name="description" content="put your site description here">
   <meta name="author" content="David Nunez">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link rel="stylesheet" href="css/main.css">
   <!-- HTML5 Shiv, this allows older versions of ie9 to accept html5. Must live in the header, below any stylesheets -->
     <!--[if lt IE 9]>
@@ -131,7 +132,7 @@
             Mobile friendly website design
           </p>
           <p>
-            Unlimited page website
+            Number of website pages
           </p>
           <p>
             Website performance analysis&nbsp;
@@ -676,13 +677,40 @@
           <p class="disclaimer">
             * The pricing for all packages reflects monthly billing amounts. This service is on autorenew. Customers on a monthly billing cycle are billed every four weeks. 
             <br>
-            † All packages with annual term includes a FREE Domain, <a href="#">Pricing Details</a>.
+            † All packages with annual term includes a FREE Domain, <a href="#modal" rel="modal:open">Pricing Details</a>.
           </p>
         </div>
       </div>
-      
     </div>
   </section>
+
+   <!-- Modal HTML embedded directly into document -->
+   <div id="modal" class="modal">
+      <h3>
+        Pricing details
+      </h3>
+      <p>
+        The “Domain Included” and the “Domain Only” domain discounts 
+        are valid for a single one (1) year domain name registration at 
+        Web.com and only for new registrations (not renewals) of 
+        generally available (not premium) domain names with the .com, 
+        .net, .org, .info, and .biz extensions. After the applicable 
+        promotional period, then-current renewal rates shall apply 
+        (currently, $15.99 for a single one (1) year domain name 
+        registration and $31.98 for a single two (2) year domain name 
+        registration). Domain names are registered on a first-come, 
+        first-served basis. There are no guarantees or warranties that the 
+        domain name will be available when you go to our website or will 
+        be accepted by the associated registry. The rights to the domain 
+        will be granted to the customer 30 days after purchase and a 
+        second payment has been made to Web.com. This offer may not 
+        be combined with any other offer. All pricing subject to change at 
+        the sole discretion of Web.com. Customer may cancel prior to the 
+        end of the promotional period or at any time thereafter by 
+        contacting Web.com Customer Service at (800) 862-8921. See our 
+        <a href="https://assets.web.com/legal/English/WholesaleTermsofUse.pdf" target="_blank">Services Agreement</a> for additional details.
+      </p>
+    </div>
 
   <section class="pricing-features-mobile">
     <div class="container">
@@ -769,7 +797,7 @@
             Mobile-friendly website design
           </p>
           <p>
-            Unlimited page website
+            1-page website
           </p>
           <p>
             Website performance analysis&nbsp;
@@ -1340,7 +1368,7 @@
     <div class="col-md-12">
         <p class="disclaimer">
           * The pricing for all packages reflects monthly billing amounts. This service is on autorenew. Customers on a monthly billing cycle are billed every four weeks. <br>
-          † All packages with annual term includes a FREE Domain, <a href="#">Pricing Details</a>
+          † All packages with annual term includes a FREE Domain, <a href="#modal" rel="modal:open">Pricing Details</a>
         </p>
     </div>
       
@@ -1406,7 +1434,7 @@
     </div>
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="js/scripts.js"></script>
 
 </body>

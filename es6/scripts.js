@@ -1,18 +1,18 @@
 "use strict" ;
 $(document).ready(function() {
   //Desktop fixed pricing section on scroll
-  var fixmeTop = $('.pricing').offset().top;       // get initial position of the element
+  var fixmeTop = $('.desktopPricing').offset().top;       // get initial position of the element
   $(window).scroll(function() {                  // assign scroll event listener
     var currentScroll = $(window).scrollTop(); // get current position
     if (currentScroll >= fixmeTop) {           // apply position: fixed if you
-      $('.pricing').css({                      // scroll to that element or below it
+      $('.desktopPricing').css({                      // scroll to that element or below it
         position: 'fixed',
         top: '0',
         left: '50%',
         transform: 'translateX(-50%)'
       });
     } else {                                   // apply position: static
-      $('.pricing').css({                      // if you scroll above it
+      $('.desktopPricing').css({                      // if you scroll above it
         position: 'relative'
       });
     }

@@ -2,57 +2,25 @@
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
-h1 {
-  color:#1164F3;
-  font-size: 55px;
-  line-height: 64px;
-  font-family: "Domine", serif;
-  margin-bottom: 24px;
-  .mobile {
-    display: none;
-  }
-}
 .custom-columns {
   display: flex;
   flex-direction: row;
   text-align:center;
 }
-.tooltip {
-  position: relative;
-  display: inline-block;
-  opacity: 1;
-  z-index: 1;
-  cursor: pointer;
-}
-.tooltip .tooltiptext {
-  visibility: hidden;
-  background: #1164F3;
-  color: #fff;
-  text-align: left;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 14px;
-  line-height: 17px;    
-  letter-spacing: 0.2px;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  width: 200px;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -170px;
-  &:after {
-    border-color: #1164F3 transparent transparent transparent;
-    border-style: solid;
-    border-width: 10px 10px 0px 10px;
-    bottom: -8px;
-    content: "";
-    position: absolute;
-    right: 20px;    
-  }
-}
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.blocker {
+  z-index: 99;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.75);
+  text-align: center;
 }
 .modal {
   z-index: 99;
@@ -91,62 +59,84 @@ h1 {
     background-position: center center;
   }
 }
-.blocker {
-  z-index: 99;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  box-sizing: border-box;
-  background-color: rgba(0,0,0,0.75);
-  text-align: center;
-  &:before {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.05em;
-  }
-}
-.tier {
-  border-radius: 4px 4px 0 0;
-  border: 1px solid  rgba(0, 0, 0, 0.18);
-  background: #ffffff;
-  max-width: 261px;
-  width: 100%;
-  border-bottom: none;
-  border-top: none;
-}
-.left-tier {
-  flex-grow: 1;
-}
-section.hero {
+.hero {
   padding: 60px 0;
   background-color: #ffffff;
-  p {
+  &__headline {
+    color:#1164F3;
+    font-size: 55px;
+    line-height: 64px;
+    font-family: "Domine", serif;
+    margin-bottom: 24px;
+  }
+  &__text {
     color: #676565;
     font-size: 24px;
     line-height: 34px;
     font-weight: 400;
   }
-  img {
+  &__mobile {
+    display: none;
+  }
+  &__image {
     width: 100%;
   }
 }
-section.pricing-features-mobile {
+.mobilePricingFeatures {
   display: none;
 }
 /* This div has to be the same height as section.pricing. 
 Adding this div fixes a "jumping" issue that occurs on scroll */
-.sticky-pricing-fix {
+.stickyPricingFix {
   height: 346px;
 }
-section.pricing {
+.desktopPricing, .desktopFeatures {
+  .left-tier {
+    flex-grow: 1;
+  }
+}
+.desktopPricing .mobilePricingFeatures {
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    z-index: 1;
+    cursor: pointer;
+    &:hover {
+      .tooltiptext {
+        visibility: visible;
+      }
+    }
+    .tooltiptext {
+      visibility: hidden;
+      background: #1164F3;
+      color: #fff;
+      text-align: left;
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 14px;
+      line-height: 17px;    
+      letter-spacing: 0.2px;
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      width: 200px;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -170px;
+      &:after {
+        border-color: #1164F3 transparent transparent transparent;
+        border-style: solid;
+        border-width: 10px 10px 0px 10px;
+        bottom: -8px;
+        content: "";
+        position: absolute;
+        right: 20px;
+      }
+    }
+  }
+}
+.desktopPricing {
   z-index: 2;
   .left-tier {
     justify-content: center;
@@ -252,7 +242,7 @@ section.pricing {
     }
   }
 }
-section.features {
+.desktopFeatures {
   h2 {
     background-color: #F5F5F5;
     padding: 18px 24px;
@@ -295,6 +285,13 @@ section.features {
     }
   }
   .tier {
+    border-radius: 4px 4px 0 0;
+    border: 1px solid  rgba(0, 0, 0, 0.18);
+    background: #ffffff;
+    max-width: 261px;
+    width: 100%;
+    border-bottom: none;
+    border-top: none;
     padding: 10px 24px 18px;
     border-radius: 0;
     .item {
@@ -314,58 +311,62 @@ section.features {
     margin-bottom: 40px;
   }
 }
-section.gallery {
-  .gallery--ppcLp { background: #f4f4f4; padding: 60px 0; text-align: center; color: #656565;}
-  .gallery--ppcLp h3 { font-size: 33.57px; font-weight: 300; line-height: 44px; margin: 0 0 10px; }
-  .gallery--ppcLp p { font-size: 18px; line-height: 36px; margin: 0 0 40px; }
-  .gallery--card {background: #fff; padding: 10px 10px 30px; transition: box-shadow 150ms ease-in-out; cursor: pointer; border-radius: 4px; box-shadow: 0 0 4px 0 rgba(0,0,0,0.24) ;}
-  .gallery--card img { max-width: 100%; }
-  .gallery--card p { margin: 0 0 20px; color: #0039A8; font-size: 13px; line-height: 24px; }
-  .gallery--card .btn { background: #981c67; color: #fff; }
-  .gallery--card:hover .btn { box-shadow:0px 5px 20px 3px rgba(121,22,82,0.3);}
-  .gallery--modal { display: none; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(255,255,255,.88); z-index: 10;}
-  .gallery--modalCard { display: block; background: #fff; box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px 0 rgba(0,0,0,0.2); border-radius: 8px; height: 80%; width: 90%; }
-  .gallery--modalCard iframe { border: 0; width: 100%; height: 88%; }
-  .gallery--open { display: flex; }
-  .gallery--close { float: right; width: 41px; margin: 21px; cursor: pointer; box-shadow: none;}
-  .gallery--close { float: right; width: 41px; margin: 21px; cursor: pointer; }
-  .gallery--modalOpen { overflow: hidden; }
+.gallery {
+  &--ppcLp { background: #f4f4f4; padding: 60px 0; text-align: center; color: #656565;}
+  &--ppcLp h3 { font-size: 33.57px; font-weight: 300; line-height: 44px; margin: 0 0 10px; }
+  &--ppcLp p { font-size: 18px; line-height: 36px; margin: 0 0 40px; }
+  &--card {background: #fff; padding: 10px 10px 30px; transition: box-shadow 150ms ease-in-out; cursor: pointer; border-radius: 4px; box-shadow: 0 0 4px 0 rgba(0,0,0,0.24) ;}
+  &--card img { max-width: 100%; }
+  &--card p { margin: 0 0 20px; color: #0039A8; font-size: 13px; line-height: 24px; }
+  &--card .btn { background: #981c67; color: #fff; }
+  &--card:hover .btn { box-shadow:0px 5px 20px 3px rgba(121,22,82,0.3);}
+  &--modal { display: none; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: rgba(255,255,255,.88); z-index: 10;}
+  &--modalCard { display: block; background: #fff; box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px 0 rgba(0,0,0,0.2); border-radius: 8px; height: 80%; width: 90%; }
+  &--modalCard iframe { border: 0; width: 100%; height: 88%; }
+  &--open { display: flex; }
+  &--close { float: right; width: 41px; margin: 21px; cursor: pointer; box-shadow: none;}
+  &--close { float: right; width: 41px; margin: 21px; cursor: pointer; }
+  &--modalOpen { overflow: hidden; }
   padding: 100px 0;
-  h1, p {
+  &__headline {
+    color:#1164F3;
+    font-size: 55px;
+    line-height: 64px;
+    font-family: "Domine", serif;
+    margin-bottom: 24px;
     text-align:center;
   }
-  p {
-    margin-bottom: 60px;
+  &__text {
+    color: #676565;
     font-size: 24px;
+    line-height: 34px;
+    font-weight: 400;
+    text-align:center;
+    margin-bottom: 60px;
+    &--examples {
+      font-size: 18px;
+      margin-top: 48px;
+      text-align: center;
+    }
   }
-  p.examples {
-    font-size: 18px;
-    margin-top: 48px;
-  }
-  img {
+  &__image {
     width: 100%;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12), 0px 4px 6px rgba(0, 0, 0, 0.06);
   }
-  .image-example {
+  &__imageExample {
     position: relative;
     height: 200px;
     &:hover {
-      .overlay {
-        display: block;
-        background: rgba(0, 0, 0, .3);
-        width: 100%;
-        height: 100%;
-      }
-      img {
+      .gallery__image {
         opacity: .35;
         transition: opacity .5s ease;
       }
-      .button {
+      .gallery__btn {
         opacity: 1;
       }
     }
   }
-  .button {
+  &__btn {
     position: absolute;
     top: 40%;
     left: 32%;
@@ -399,31 +400,31 @@ section.gallery {
   }
 }
 @media screen and (max-width:768px) {
-  section.pricing, section.features, .sticky-pricing-fix {
+  .pricing, .desktopFeatures, .stickyPricingFix {
     display: none;
   }
-  section.hero {
-    h1 {
+  .hero {
+    &__headline {
       font-size: 35px;
       line-height: 43px;
       text-align: center;
-      .mobile {
-        display: block;
-      }
     }
-    p {
+    &--mobile {
+      display: block;
+    }
+    &__text {
       display: none;
     }
-    img {
+    &__image {
       max-width: 282px;
       max-height: 162px;
     }
-    .image-center {
+    &__imageCenter {
       justify-content: center;
       display:flex;
     }
   }
-  section.pricing-features-mobile {
+  .mobilePricingFeatures {
     display: block;
     .container {
       width: 100%;
@@ -697,26 +698,23 @@ section.gallery {
       }
     }
   }
-  section.gallery {
+  .gallery {
     padding: 75px 0;
-    h1 {
+    &__headline {
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       font-weight: 300;
       font-size: 35px;
       line-height: 44px;
     }
-    p {
+    &__text {
       font-size: 24px;
       line-height: 29px;
       color: #676565;
-      &.examples {
+      &--examples {
         margin: 24px 0 36px;
       }
     }
-    img {
-      position: relative;
-    }
-    .image-example {
+    &__imageExample {
       height: auto;
         &:visited, &:hover {
           img {
@@ -727,18 +725,21 @@ section.gallery {
         }
       }
     }
+    &__image {
+      position: relative;
+    }
   }
 }
 @media screen and (max-width: 500px) {
-  section.gallery {
-    .gallery--modalCard {
+  .gallery {
+    &--modalCard {
         height: 100vh;
         width: 100%;
     }
   }
 }
 @media screen and (max-width: 480px) {
-  section.pricing-features-mobile {
+  .mobilePricingFeatures {
     display: block;
     .container {
       width: 100%;

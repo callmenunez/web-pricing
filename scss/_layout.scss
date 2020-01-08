@@ -7,6 +7,7 @@ h1, h2, h3, h4, h5, h6, p {
   flex-direction: row;
   text-align:center;
 }
+//jquery modal styles, do not delete
 .blocker {
   z-index: 99;
   padding: 10px;
@@ -21,6 +22,13 @@ h1, h2, h3, h4, h5, h6, p {
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.75);
   text-align: center;
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.05em;
+  }
 }
 .modal {
   z-index: 99;
@@ -59,6 +67,8 @@ h1, h2, h3, h4, h5, h6, p {
     background-position: center center;
   }
 }
+//end of jquery modal styles, do not delete
+
 .hero {
   padding: 60px 0;
   background-color: #ffffff;
@@ -91,74 +101,79 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
   height: 346px;
 }
 .desktopPricing, .desktopFeatures {
-  .left-tier {
+  &__leftTier {
     flex-grow: 1;
   }
 }
-.desktopPricing .mobilePricingFeatures {
-  .tooltip {
+.desktopFeatures, .mobilePricingFeatures {
+  &__tooltip {
     position: relative;
     display: inline-block;
     opacity: 1;
     z-index: 1;
     cursor: pointer;
     &:hover {
-      .tooltiptext {
+      .desktopFeatures__tooltipText, .mobilePricingFeatures__tooltipText {
         visibility: visible;
       }
     }
-    .tooltiptext {
-      visibility: hidden;
-      background: #1164F3;
-      color: #fff;
-      text-align: left;
-      border-radius: 4px;
-      padding: 8px;
-      font-size: 14px;
-      line-height: 17px;    
-      letter-spacing: 0.2px;
-      /* Position the tooltip */
+  }
+  &__tooltipText {
+    visibility: hidden;
+    background: #1164F3;
+    color: #fff;
+    text-align: left;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 17px;    
+    letter-spacing: 0.2px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -170px;
+    &:after {
+      border-color: #1164F3 transparent transparent transparent;
+      border-style: solid;
+      border-width: 10px 10px 0px 10px;
+      bottom: -8px;
+      content: "";
       position: absolute;
-      z-index: 1;
-      width: 200px;
-      bottom: 150%;
-      left: 50%;
-      margin-left: -170px;
-      &:after {
-        border-color: #1164F3 transparent transparent transparent;
-        border-style: solid;
-        border-width: 10px 10px 0px 10px;
-        bottom: -8px;
-        content: "";
-        position: absolute;
-        right: 20px;
-      }
+      right: 20px;
     }
   }
 }
 .desktopPricing {
   z-index: 2;
-  .left-tier {
+  &__leftTier {
     justify-content: center;
     align-items: center;
     display: flex;
     background-color: #ffffff;
-    p {
-      color: #676565;
-      font-size: 14px;
-      line-height: 20px;
-      .save {
-        color: #409B66;
-        font-size: 28px;
-        line-height: 25px;
-      }
-      .italic {
-        font-size: 8px;
-        font-style: italic;
-      }
+  }
+  &__text {
+    color: #676565;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 12px;
+    &--save {
+      color: #409B66;
+      font-size: 28px;
+      line-height: 25px;
+    }
+    &--italic {
+      font-size: 8px;
+      font-style: italic;
+    }
+    &--bold {
+      font-weight: 600;
+      margin-bottom: 12px;
     }
   }
-  .tier {
+  &__tier {
     border-radius: 4px 4px 0 0;
     border: 1px solid  rgba(0, 0, 0, 0.18);
     background: #ffffff;
@@ -166,53 +181,6 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
     width: 100%;
     padding: 28px 0;
     border-bottom: none;
-    h2 {
-      font-size: 45px;
-      line-height: 36px;
-      letter-spacing: -0.8px;
-      font-weight: 600;
-      .month {
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 1px;
-      }
-    }
-    h3 {
-      font-weight: 300;
-      font-size: 28px;
-      line-height: 36px;
-      margin-bottom: 10px;
-    }
-    h4 {
-      position: relative;
-      color: #DCDCDC;
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 36px;
-      margin-bottom: 8px;
-      &:before { 
-        content: '';
-        position: absolute;
-        bottom: 50%;
-        border: #DCDCDC 1px solid;
-        width: 92px;
-        z-index:0;
-      }
-      .month {
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 600;
-      }
-    }
-    p {
-      color: rgba(0, 0, 0, 0.68);
-      font-size: 14px;
-      margin-bottom: 12px;
-      &.bold {
-        font-weight: 600;
-      }
-    }
     &.starter {
       border-top: solid 20px#8C2F9A;
       color: #8C2F9A;
@@ -225,34 +193,73 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
       border-top: solid 20px#1164F3;
       color: #1164F3;
     }
-    button.add-to-cart {
-      line-height: 10px;
-      height: 40px;
-      padding: 12px 16px;
+  }
+  &__header {
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 10px;
+  }
+  &__grayPrice {
+    position: relative;
+    color: #DCDCDC;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 8px;
+    &:before { 
+      content: '';
+      position: absolute;
+      bottom: 50%;
+      border: #DCDCDC 1px solid;
+      width: 92px;
+      z-index:0;
+    }
+    &--month {
       text-transform: uppercase;
-      color: #ffffff;
+      font-size: 12px;
       font-weight: 600;
-      border-radius: 4px;
-      background-color: #BD2380;
-      border: none;
-      a {
-        color: #ffffff;
-        text-decoration: none;
-      }
+    }
+  }
+  &__price {
+    font-size: 45px;
+    line-height: 36px;
+    letter-spacing: -0.8px;
+    font-weight: 600;
+    &--month {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+  }
+  &__btn--addToCart {
+    line-height: 10px;
+    height: 40px;
+    padding: 12px 16px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 4px;
+    background-color: #BD2380;
+    border: none;
+    a {
+      color: #ffffff;
+      text-decoration: none;
     }
   }
 }
 .desktopFeatures {
-  h2 {
+  &__header {
     background-color: #F5F5F5;
     padding: 18px 24px;
     color: #000000;
     font-size: 20px;
     line-height: 28px;
   }
-  p {
+  &__text {
     font-size: 16px;
-    &.disclaimer {
+    &--disclaimer {
       text-align: left;
       font-size: 13px;
       line-height: 20px;
@@ -267,7 +274,7 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
       }
     }
   }
-  .left-tier {
+  &__leftTier {
     padding: 10px 24px 18px;
     text-align:left;
     border: 1px solid rgba(0, 0, 0, 0.18);
@@ -275,16 +282,16 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
     border-bottom: none;
     border-top: none;
     border-right: none;
-    p {
-      border-bottom: 1px solid #c6c6c6;
-      min-height: 43.89px;
-      line-height: 20px;
-      padding: 10px 0;
-      font-size: 16px;
-      letter-spacing: -0.4px;
-    }
   }
-  .tier {
+  &__leftText {
+    border-bottom: 1px solid #c6c6c6;
+    min-height: 43.89px;
+    line-height: 20px;
+    padding: 10px 0;
+    font-size: 16px;
+    letter-spacing: -0.4px;
+  }
+  &__tier {
     border-radius: 4px 4px 0 0;
     border: 1px solid  rgba(0, 0, 0, 0.18);
     background: #ffffff;
@@ -306,7 +313,7 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
       }
     }
   }
-  .last-row {
+  &__lastRow {
     border-bottom: 1px solid #c6c6c6;
     margin-bottom: 40px;
   }
@@ -456,109 +463,14 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
     .sticky-tabs-fix {
       height: 60px;
     }
-    .tabs {
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 15px;
-      transition: .5s;
-      background: #ffffff;
-        .mobile-tab {
-          flex-grow: 1;
-          height: 60px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          a {
-            width: 100%;
-            text-align: center;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-          &.tab1 {
-            color: #8C2F9A;
-            border: solid 1px #8C2F9A;
-            border-radius: 4px 0 0 4px;
-            transition: .5s;
-            &:hover, &.active {
-              background: #8C2F9A;
-              a {
-                color: #fff;
-                text-decoration: none;
-                transition: .5s;
-              }
-            }
-            a {
-              color: #8C2F9A;
-            }
-          }
-          &.tab2 {
-            color: #4B45CD;
-            border: solid 1px #4B45CD;
-            transition: .5s;
-            border-left: none;
-            border-right: none;
-            &:hover, &.active {
-              background: #4B45CD;
-              a {
-                color: #fff;
-                text-decoration: none;
-                transition: .5s;
-              }
-            }
-            a {
-              color: #4B45CD;
-            }
-          }
-          &.tab3 {
-            color: #1164F3;
-            border: solid 1px #1164F3;
-            border-radius: 0 4px 4px 0;
-            transition: .5s;
-            &:hover, &.active {
-              background: #1164F3;
-              a {
-                color: #fff;
-                text-decoration: none;
-                transition: .5s;
-              }
-            }
-            a {
-              color: #1164F3;
-            }
-          }
-        a {
-          font-size: 13px;
-          line-height: 20px;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-        }
-      }
-      
-    }
-    h2 {
-      font-size: 45px;
-      line-height: 36px;
-      letter-spacing: -0.8px;
-      font-weight: 600;
-      text-align: center;
-      .month {
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 1px;
-      }
-    }
-    h3 {
+    &__header {
       text-align: center;
       font-weight: 300;
       font-size: 28px;
       line-height: 36px;
       margin-bottom: 10px;
     }
-    h4 {
+    &__grayPrice {
       position: relative;
       color: #DCDCDC;
       font-weight: 700;
@@ -574,35 +486,130 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
         width: 92px;
         z-index:0;
       }
-      .month {
+      &--month {
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 600;
       }
     }
-    p {
+    &__price {
+      font-size: 45px;
+      line-height: 36px;
+      letter-spacing: -0.8px;
+      font-weight: 600;
+      text-align: center;
+      &--month {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+    }
+
+    &__tabSection {
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+      transition: .5s;
+      background: #ffffff;
+    }
+    &__tab {
+      flex-grow: 1;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        width: 100%;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &.tab1 {
+        color: #8C2F9A;
+        border: solid 1px #8C2F9A;
+        border-radius: 4px 0 0 4px;
+        transition: .5s;
+        &:hover, &.active {
+          background: #8C2F9A;
+          a {
+            color: #fff;
+            text-decoration: none;
+            transition: .5s;
+          }
+        }
+        a {
+          color: #8C2F9A;
+        }
+      }
+      &.tab2 {
+        color: #4B45CD;
+        border: solid 1px #4B45CD;
+        transition: .5s;
+        border-left: none;
+        border-right: none;
+        &:hover, &.active {
+          background: #4B45CD;
+          a {
+            color: #fff;
+            text-decoration: none;
+            transition: .5s;
+          }
+        }
+        a {
+          color: #4B45CD;
+        }
+      }
+      &.tab3 {
+        color: #1164F3;
+        border: solid 1px #1164F3;
+        border-radius: 0 4px 4px 0;
+        transition: .5s;
+        &:hover, &.active {
+          background: #1164F3;
+          a {
+            color: #fff;
+            text-decoration: none;
+            transition: .5s;
+          }
+        }
+        a {
+          color: #1164F3;
+        }
+      }
+      a {
+        font-size: 13px;
+        line-height: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+    }
+    &__text {
       text-align: center;
       color: #676565;
       font-size: 14px;
       line-height: 20px;
-      .save {
+      &--save {
         color: #409B66;
         font-size: 28px;
         line-height: 25px;
       }
-      .italic {
+      &--italic {
         font-size: 8px;
         font-style: italic;
       }
-      &.bold {
+      &--bold {
         font-weight: 600;
         margin-bottom: 12px;
       }
-      &.top-features {
+      &--topFeatures {
         text-transform: uppercase;
         font-weight: 700;
       }
-      &.feature {
+      &--feature {
         font-size: 16px;
         line-height:24px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.18);
@@ -612,7 +619,7 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
         display: flex;
         justify-content: space-between;
       }
-      &.disclaimer {
+      &--disclaimer {
         text-align: left;
         font-size: 13px;
         line-height: 20px;
@@ -628,7 +635,7 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
         }
       }
     }
-    button.add-to-cart {
+    &__btn--addToCart {
       line-height: 10px;
       height: 40px;
       padding: 12px 16px;
@@ -653,7 +660,7 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
     .marketing-color {
       color: #1164F3;
     }
-    .tier-top {
+    &__tierTop {
       border-radius: 4px;
       border: 1px solid  rgba(0, 0, 0, 0.18);
       background: #ffffff;
@@ -661,8 +668,8 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
       text-align: center;
       margin: 15px;
     }
-    .tier-middle {
-      .grey-bg {
+    &__tierMiddle {
+      &--header {
         width: 100%;
         background-color: #F5F5F5;
         height: 60px;
@@ -672,17 +679,15 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
         margin-top: 24px;
         padding: 0 15px;
       }
-      .feature-mobile {
-        p {
-          line-height: 24px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-          font-size: 16px;
-          text-align: left;
-          padding: 10px 0;
-        }
+      &--text {
+        line-height: 24px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+        font-size: 16px;
+        text-align: left;
+        padding: 10px 0;
       }
     }
-    .tier-bottom {
+    &__tierBottom {
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -739,277 +744,6 @@ Adding this div fixes a "jumping" issue that occurs on scroll */
   }
 }
 @media screen and (max-width: 480px) {
-  .mobilePricingFeatures {
-    display: block;
-    .container {
-      width: 100%;
-    }
-    #starter, #website, #marketing {
-      display: none;
-      &.active {
-        display: block;
-      }
-      &.active-padding {
-        padding-top: 60px;
-      }
-      &.inactive {
-        display: none;
-      }
-    }
-    .fixed {
-      display: flex;
-      position: fixed;
-      top: 0;
-      left: 15px;
-      right: 15px;
-      margin-top: 0!important;
-      z-index:10;
-    }
-    .sticky-tabs-fix {
-      height: 60px;
-    }
-    .tabs {
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 15px;
-      transition: .5s;
-      background: #ffffff;
-        .mobile-tab {
-          flex-grow: 1;
-          height: 60px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          a {
-            width: 100%;
-            text-align: center;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-          &.tab1 {
-            color: #8C2F9A;
-            border: solid 1px #8C2F9A;
-            border-radius: 4px 0 0 4px;
-            transition: .5s;
-            &:hover, &.active {
-              background: #8C2F9A;
-              a {
-                color: #fff;
-                text-decoration: none;
-                transition: .5s;
-              }
-            }
-            a {
-              color: #8C2F9A;
-            }
-          }
-          &.tab2 {
-            color: #4B45CD;
-            border: solid 1px #4B45CD;
-            transition: .5s;
-            border-left: none;
-            border-right: none;
-            &:hover, &.active {
-              background: #4B45CD;
-              a {
-                color: #fff;
-                text-decoration: none;
-                transition: .5s;
-              }
-            }
-            a {
-              color: #4B45CD;
-            }
-          }
-          &.tab3 {
-            color: #1164F3;
-            border: solid 1px #1164F3;
-            border-radius: 0 4px 4px 0;
-            transition: .5s;
-            &:hover, &.active {
-              background: #1164F3;
-              a {
-                color: #fff;
-                text-decoration: none;
-                transition: .5s;
-              }
-            }
-            a {
-              color: #1164F3;
-            }
-          }
-        a {
-          font-size: 13px;
-          line-height: 20px;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-        }
-      }
-      
-    }
-    h2 {
-      font-size: 45px;
-      line-height: 36px;
-      letter-spacing: -0.8px;
-      font-weight: 600;
-      text-align: center;
-      .month {
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 1px;
-      }
-    }
-    h3 {
-      text-align: center;
-      font-weight: 300;
-      font-size: 28px;
-      line-height: 36px;
-      margin-bottom: 10px;
-    }
-    h4 {
-      position: relative;
-      color: #DCDCDC;
-      font-weight: 700;
-      font-size: 28px;
-      line-height: 36px;
-      margin-bottom: 8px;
-      text-align: center;
-      &:before { 
-        content: '';
-        position: absolute;
-        bottom: 50%;
-        border: #DCDCDC 1px solid;
-        width: 92px;
-        z-index:0;
-      }
-      .month {
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 600;
-      }
-    }
-    p {
-      text-align: center;
-      color: #676565;
-      font-size: 14px;
-      line-height: 20px;
-      .save {
-        color: #409B66;
-        font-size: 28px;
-        line-height: 25px;
-      }
-      .italic {
-        font-size: 8px;
-        font-style: italic;
-      }
-      &.bold {
-        font-weight: 600;
-        margin-bottom: 12px;
-      }
-      &.top-features {
-        text-transform: uppercase;
-        font-weight: 700;
-      }
-      &.feature {
-        font-size: 16px;
-        line-height:24px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-        text-align: left;
-        margin-bottom: 0;
-        padding: 12px 0;
-        display: flex;
-        justify-content: space-between;
-      }
-      &.disclaimer {
-        text-align: left;
-        font-size: 13px;
-        line-height: 20px;
-        color: #7C7C7C;
-        margin-top: 16px;
-        a {
-          color: #BD2380;
-          text-decoration: none;
-          &:hover {
-            opacity: .75;
-            transition: .5s;
-          }
-        }
-      }
-    }
-    button.add-to-cart {
-      line-height: 10px;
-      height: 40px;
-      padding: 12px 16px;
-      text-transform: uppercase;
-      color: #ffffff;
-      font-weight: 600;
-      border-radius: 4px;
-      background-color: #BD2380;
-      border: none;
-      margin: 24px 0 28px;
-      a {
-        color: #ffffff;
-        text-decoration: none;
-      }
-    }
-    .starter-color {
-      color: #8C2F9A;
-    }
-    .website-color {
-      color: #4B45CD;
-    }
-    .marketing-color {
-      color: #1164F3;
-    }
-    .tier-top {
-      border-radius: 4px;
-      border: 1px solid  rgba(0, 0, 0, 0.18);
-      background: #ffffff;
-      padding: 28px;
-      text-align: center;
-      margin: 15px;
-    }
-    .tier-middle {
-      .grey-bg {
-        width: 100%;
-        background-color: #F5F5F5;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin-top: 24px;
-        padding: 0 15px;
-      }
-      .feature-mobile {
-        p {
-          line-height: 24px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.18);
-          font-size: 16px;
-          text-align: left;
-          padding: 10px 0;
-        }
-      }
-    }
-    .tier-bottom {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      h4 {
-        margin-top: 48px;
-      }
-      hr {
-        background: rgba(0, 0, 0, 0.18);
-        max-width: 215px;
-        margin: 0 auto;
-        width: 100%;
-      }
-    }
-  }
   .modal {
     padding: 20px 20px 40px;
     h3 {

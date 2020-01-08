@@ -19,17 +19,17 @@ $(document).ready(function() {
   });
 
     //Mobile fixed pricing section on scroll
-    var fixmeTopMobile = $('.tabs').offset().top;       // get initial position of the element
+    var fixmeTopMobile = $('.mobilePricingFeatures__tabSection').offset().top;       // get initial position of the element
     $(window).scroll(function() {                  // assign scroll event listener
       var currentScroll = $(window).scrollTop(); // get current position
       if (currentScroll >= fixmeTopMobile) {           // apply position: fixed if you
-        $('.tabs').css({                      // scroll to that element or below it
+        $('.mobilePricingFeatures__tabSection').css({                      // scroll to that element or below it
           position: 'fixed',
           top: '0',
           width: '100%'
         });
       } else {                                   // apply position: static
-        $('.tabs').css({                      // if you scroll above it
+        $('.mobilePricingFeatures__tabSection').css({                      // if you scroll above it
           position: 'relative',
           width: 'auto'
         });
@@ -54,15 +54,15 @@ $(document).ready(function() {
     });
 
   //Controls mobile price tabs
-  $('.tabs > div > a').click(function(event) {
+  $('.mobilePricingFeatures__tabSection > div > a').click(function(event) {
     event.preventDefault(); //stop browser to take action for clicked anchor
     //get displaying tab content jQuery selector
-    var active_tab_selector = $('.tabs > div.mobile-tab.active > a').attr('href');
+    var active_tab_selector = $('.mobilePricingFeatures__tabSection > div.mobilePricingFeatures__tab.active > a').attr('href');
     //find actived navigation and remove 'active' css
-    var actived_nav = $('.tabs > div.mobile-tab.active');
+    var actived_nav = $('.mobilePricingFeatures__tabSection > div.mobilePricingFeatures__tab.active');
     actived_nav.removeClass('active');
     //add 'active' css into clicked navigation
-    $(this).parents('div.mobile-tab').addClass('active');
+    $(this).parents('div.mobilePricingFeatures__tab').addClass('active');
     //inactive displaying tab content
     $(active_tab_selector).removeClass('active');
     $(active_tab_selector).addClass('inactive');

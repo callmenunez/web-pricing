@@ -22,17 +22,18 @@ $(document).ready(function() {
     //Mobile fixed pricing section on scroll
     var fixmeTopMobile = $('.mobilePricingFeatures__tabSection').offset().top;       // get initial position of the element
     $(window).scroll(function() {                  // assign scroll event listener
-      var currentScroll = $(window).scrollTop(); // get current position
+      var currentScroll = $(window).scrollTop()+80; // get current position
       if (currentScroll >= fixmeTopMobile) {           // apply position: fixed if you
         $('.mobilePricingFeatures__tabSection').css({                      // scroll to that element or below it
           position: 'fixed',
-          top: '0',
+          top: '80px',
           width: '100%'
         });
       } else {                                   // apply position: static
         $('.mobilePricingFeatures__tabSection').css({                      // if you scroll above it
           position: 'relative',
-          width: 'auto'
+          width: 'auto',
+          top: '0'
         });
       }
     });
@@ -40,17 +41,17 @@ $(document).ready(function() {
     //Control scroll to top of tabs 
     $(".tab1").click(function() {
       $('html,body').animate({
-          scrollTop: $("#starter").offset().top-75},
+          scrollTop: $("#starter").offset().top-155},
           'slow');
     });
     $(".tab2").click(function() {
       $('html,body').animate({
-          scrollTop: $("#website").offset().top-75},
+          scrollTop: $("#website").offset().top-155},
           'slow');
     });
     $(".tab3").click(function() {
       $('html,body').animate({
-          scrollTop: $("#marketing").offset().top-75},
+          scrollTop: $("#marketing").offset().top-155},
           'slow');
     });
 
